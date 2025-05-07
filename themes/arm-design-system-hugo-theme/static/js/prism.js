@@ -8975,6 +8975,21 @@ Prism.languages.ocaml = {
 	'punctuation': /;;|::|[(){}\[\].,:;#]|\b_\b/
 };
 
+Prism.languages.leanlike = Prism.languages.extend('ocaml', {
+	'keyword': /\b(?:as|axiom|assumption|variable|assert|begin|bv_decide|#check|#eval|#reduce|#print|calc|class|constraint|def|do|done|downto|else|end|exception|external|for|from|fun|function|have|if|inductive|import|inherit|initializer|lazy|let|match|method|module|mutable|new|not|nonrec|object|of|open|only|private|rec|section|set_option|show|simp|simp_all|sorry|struct|theorem|then|to|try|type|val|value|virtual|when|where|while|with)\b/,
+	'operator': /\.[.~]|:[=>]|[∃→↔∀→∧∨¬=<>@^|&+\-*\/$%!?~][!$%&*+\-.\/:<=>?@^|~]*|\b(?:and|asr|by|land|lor|lsl|lsr|lxor|mod|or)\b/,
+	'comment': {
+		pattern: /(^|[^\-])\-\-.*/,
+		lookbehind: true,
+		greedy: true
+	},
+	'builtin': {
+		pattern: /[ \t]+(?:Prop|BitVec|String|Int|Nat|Type)\b/,
+		lookbehind: true
+	},
+	'punctuation': /;;|::|[⟨⟩(){}\[\].,:;#]|\b_\b/
+});
+
 (function (Prism) {
 	var escapes = /\\(?:["'\\abefnrtv]|0[0-7]{2}|U[\dA-Fa-f]{6}|u[\dA-Fa-f]{4}|x[\dA-Fa-f]{2})/;
 
